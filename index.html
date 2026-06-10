@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Baljeet Bal — QA Engineer</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232563eb'/><text y='72' x='50' text-anchor='middle' font-size='62' font-family='system-ui,sans-serif' font-weight='700' fill='white'>B</text></svg>">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --text: #1a1a1a; --muted: #6b7280; --border: #e5e7eb;
+      --accent: #2563eb; --bg: #ffffff; --tag-bg: #f3f4f6;
+    }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; font-size: 15px; }
+    .page { max-width: 760px; margin: 0 auto; padding: 60px 24px 100px; }
+    header { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; padding-bottom: 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+    .header-left h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 4px; }
+    .header-left .title { font-size: 15px; color: var(--muted); font-weight: 400; }
+    .header-left .location { font-size: 13px; color: var(--muted); margin-top: 6px; }
+    .availability { display: inline-flex; align-items: center; gap: 7px; background: #f0fdf4; border: 1px solid #bbf7d0; color: #15803d; font-size: 12px; font-weight: 500; padding: 5px 11px; border-radius: 99px; margin-top: 10px; }
+    .availability .dot { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; flex-shrink: 0; box-shadow: 0 0 0 2px #bbf7d0; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { box-shadow: 0 0 0 2px #bbf7d0; } 50% { box-shadow: 0 0 0 4px #dcfce7; } }
+    .links { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 8px; font-size: 13px; font-weight: 500; text-decoration: none; transition: background 0.15s, color 0.15s; cursor: pointer; border: none; }
+    .btn-outline { border: 1px solid var(--border); color: var(--text); background: transparent; }
+    .btn-outline:hover { background: var(--tag-bg); }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: #1d4ed8; }
+    .summary { padding: 36px 0 32px; border-bottom: 1px solid var(--border); }
+    .summary p { color: #374151; font-size: 15px; line-height: 1.75; max-width: 680px; }
+    section { padding: 36px 0; border-bottom: 1px solid var(--border); }
+    section:last-child { border-bottom: none; }
+    .section-label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
+    .skills-grid { display: flex; flex-direction: column; gap: 14px; }
+    .skill-row { display: flex; gap: 12px; align-items: flex-start; }
+    .skill-category { font-size: 13px; font-weight: 600; color: var(--text); min-width: 140px; padding-top: 3px; flex-shrink: 0; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag { background: var(--tag-bg); color: #374151; font-size: 12px; padding: 3px 9px; border-radius: 5px; }
+    .job { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 22px 24px; margin-bottom: 14px; transition: box-shadow 0.15s; }
+    .job:last-child { margin-bottom: 0; }
+    .job:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
+    .job-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 4px; flex-wrap: wrap; }
+    .job-company { font-size: 16px; font-weight: 600; }
+    .job-dates { font-size: 13px; color: var(--muted); white-space: nowrap; padding-top: 2px; }
+    .job-role { font-size: 13px; color: var(--accent); font-weight: 500; margin-bottom: 10px; }
+    .job-location { font-size: 13px; color: var(--muted); }
+    .job ul { list-style: none; padding: 0; margin-top: 10px; }
+    .job ul li { font-size: 14px; color: #374151; padding: 4px 0 4px 16px; position: relative; line-height: 1.6; }
+    .job ul li::before { content: "–"; position: absolute; left: 0; color: var(--muted); }
+    .project-title { font-size: 14px; font-weight: 600; color: var(--text); margin: 16px 0 6px; }
+    .tools-row { margin-top: 14px; font-size: 13px; color: var(--muted); }
+    .tools-row strong { color: var(--text); }
+    .edu-item { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+    .edu-item:last-child { border-bottom: none; }
+    .edu-name { font-size: 14px; font-weight: 600; }
+    .edu-detail { font-size: 13px; color: var(--muted); }
+    footer { margin-top: 60px; text-align: center; font-size: 12px; color: var(--muted); }
+    @media (max-width: 560px) {
+      .page { padding: 40px 16px 80px; }
+      header { flex-direction: column; }
+      .skill-row { flex-direction: column; gap: 6px; }
+      .skill-category { min-width: unset; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="header-left">
+      <h1>Baljeet Bal</h1>
+      <div class="title">QA Engineer · 7+ years</div>
+      <div class="location">Surrey, BC · Canada</div>
+      <div class="availability">
+        <span class="dot"></span>
+        Open to contract roles
+      </div>
+    </div>
+    <div class="links">
+      <button onclick="copyEmail(this)" class="btn btn-outline">
+        <svg id="copy-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        <span id="copy-label">Copy email</span>
+      </button>
+      <a href="tel:6474829893" class="btn btn-outline">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.69h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.09a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17.42z"/></svg>
+        647-482-9893
+      </a>
+      <a href="https://www.linkedin.com/in/baljeet-bal-6b3288206/" target="_blank" rel="noopener" class="btn btn-outline">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://github.com/baljeet0315" target="_blank" rel="noopener" class="btn btn-outline">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        GitHub
+      </a>
+      <a href="resume.pdf" download class="btn btn-primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download CV
+      </a>
+    </div>
+  </header>
+
+  <div class="summary">
+    <p>Detail-oriented QA Engineer with over 7 years of hands-on experience testing complex, highly integrated digital platforms across web, mobile, and back-end systems. Skilled in API and functional testing, with a proven ability to design and execute comprehensive test strategies for both manual and automated testing. Demonstrated success leading QA efforts within cross-functional teams, consistently delivering high-quality software under tight deadlines. Experienced in Agile/Scrum environments and CI/CD pipelines.</p>
+  </div>
+
+  <section>
+    <div class="section-label">Core Skills</div>
+    <div class="skills-grid">
+      <div class="skill-row">
+        <div class="skill-category">Testing & QA</div>
+        <div class="skill-tags">
+          <span class="tag">Manual Testing</span><span class="tag">Automated Testing</span><span class="tag">API Testing</span><span class="tag">Functional Testing</span><span class="tag">BDD</span><span class="tag">Test Planning</span><span class="tag">AI-Assisted Test Gen</span><span class="tag">AIDLC</span><span class="tag">TEM</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-category">Tools</div>
+        <div class="skill-tags">
+          <span class="tag">Selenium WebDriver</span><span class="tag">Appium</span><span class="tag">Postman</span><span class="tag">Charles Proxy</span><span class="tag">JIRA</span><span class="tag">Azure DevOps</span><span class="tag">Xcode</span><span class="tag">Contentful</span><span class="tag">AWS S3</span><span class="tag">GitHub</span><span class="tag">Bitbucket</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-category">Languages</div>
+        <div class="skill-tags">
+          <span class="tag">Python (OOP)</span><span class="tag">SQL</span><span class="tag">Oracle</span><span class="tag">MySQL</span><span class="tag">PowerShell</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-category">Performance</div>
+        <div class="skill-tags">
+          <span class="tag">Apache JMeter</span><span class="tag">Load Testing</span><span class="tag">Datadog</span><span class="tag">Splunk</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-category">CI/CD & DevOps</div>
+        <div class="skill-tags">
+          <span class="tag">Git</span><span class="tag">Azure DevOps</span><span class="tag">CI/CD Pipelines</span><span class="tag">Peer Code Review</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-category">Leadership</div>
+        <div class="skill-tags">
+          <span class="tag">QA Lead</span><span class="tag">Mentoring</span><span class="tag">Agile/Scrum</span><span class="tag">Risk Management</span><span class="tag">Stakeholder Comms</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Experience</div>
+
+    <div class="job">
+      <div class="job-header">
+        <div class="job-company">Lululemon Athletica</div>
+        <div class="job-dates">May 2022 – Present</div>
+      </div>
+      <div class="job-role">QA Engineer (Contract) <span class="job-location">· Vancouver, BC</span></div>
+      <ul>
+        <li>Delivered end-to-end QA across multiple projects on iOS and web platforms, covering front-end and back-end systems</li>
+        <li>Acted as QA lead on various feature teams — owned task allocation, test planning, coordination, and sign-off</li>
+        <li>Developed and enhanced an internal automated testing framework to improve regression efficiency and maintainability</li>
+        <li>Supported implementation of an AI-powered testing tool that automates test case generation by ingesting Jira tickets</li>
+        <li>Managed test environments (TEM) across multiple projects; collaborated in Git-based workflows with peer code review</li>
+        <li>Reported to senior management on test coverage, automation progress, and key performance metrics</li>
+      </ul>
+      <div class="project-title">Next Gen E-commerce (NGC) – Web & iOS</div>
+      <ul>
+        <li>Replaced legacy systems with modern microservices for Cart, Shipping, and Payments</li>
+        <li>Defined and executed comprehensive master test plans across platforms</li>
+        <li>Performed integration and API testing using Postman; deployed regression suites within CI/CD pipelines via Azure DevOps</li>
+        <li>Supported A/B testing initiatives to inform go/no-go decisions</li>
+      </ul>
+      <div class="project-title">Estimated Delivery Date (EDD)</div>
+      <ul>
+        <li>Validated end-to-end EDD feature ensuring accurate delivery date calculation across web and iOS</li>
+        <li>Tested Order-By / Get-By logic for cutoff time handling, timezone accuracy, and edge cases across shipping methods</li>
+        <li>Performed API testing with Postman; executed regression and integration testing to protect existing Cart/Checkout flows</li>
+      </ul>
+      <div class="project-title">Apple Wallet Order Tracking – Narvar Pilot</div>
+      <ul>
+        <li>Integrated Lululemon app with Apple Wallet and Narvar for real-time order tracking</li>
+        <li>Used Postman for API validation and Splunk for engagement monitoring</li>
+        <li>Owned QA planning and cross-functional communication between vendor and internal teams</li>
+      </ul>
+      <div class="project-title">UI Redesign & Other Projects</div>
+      <ul>
+        <li>Conducted detailed UI and functional testing for redesigned components including error states, checkout, and bag experience</li>
+        <li>Gift Card (Givex): Tested payment method integration; validated data transformations between payment systems</li>
+        <li>Inventory Management System (DIS): Validated system migration and inventory syncing</li>
+      </ul>
+      <div class="tools-row"><strong>Tools:</strong> Selenium WebDriver (Python), Postman, Xcode, Charles Proxy, SQL, TestRail, Jira, Azure DevOps, Confluence, AWS, Git/Bitbucket, AI test case generation tool</div>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <div class="job-company">Accedo.tv</div>
+        <div class="job-dates">Aug 2021 – May 2022</div>
+      </div>
+      <div class="job-role">QA Analyst (Contract) <span class="job-location">· Toronto, ON</span></div>
+      <ul>
+        <li>Led QA for the Peloton OTT application on iOS and tvOS platforms</li>
+        <li>Designed master test plans; executed API testing using Postman and network debugging with Charles Proxy</li>
+        <li>Validated back-end data using SQL; monitored app performance via Datadog and Splunk dashboards</li>
+        <li>Provided L2 incident triage and collaborated with L3 and service management teams</li>
+        <li>Liaised with client stakeholders to align QA strategy and delivery timelines</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <div class="job-company">You.i Labs</div>
+        <div class="job-dates">Apr 2016 – Feb 2020</div>
+      </div>
+      <div class="job-role">QA Analyst <span class="job-location">· Ottawa, ON</span></div>
+      <ul>
+        <li>Led testing of cross-platform OTT applications for major clients across iOS, Android, PS4/5, Xbox, Roku, Samsung, LG, and Nintendo</li>
+        <li>Executed test cycles covering DRM, video playback, and user sessions using Charles Proxy, Mongo Compass, and Xcode</li>
+        <li>Developed and maintained Selenium WebDriver-based automation scripts; contributed to framework design</li>
+        <li>Conducted performance and load testing using Apache JMeter to evaluate back-end stability under varying traffic loads</li>
+        <li>Mentored new hires, developed onboarding guides, and standardized internal QA processes</li>
+        <li>Wrote and delivered test automation demos and training materials for onboarding QA team members</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <div class="job-company">Tata Consultancy Services (TCS)</div>
+        <div class="job-dates">Mar 2013 – Dec 2015</div>
+      </div>
+      <div class="job-role">System Analyst <span class="job-location">· Pune, India</span></div>
+      <ul>
+        <li>Delivered the BSNL-CDR project using SAP CRM, ensuring high data integrity across 13 integrated modules</li>
+        <li>Administered EAI systems and messaging databases processing over 5 million transactions daily</li>
+        <li>Provided production support and maintained failover system readiness for critical services</li>
+        <li>Performed data transformation validation and ensured end-to-end data flow accuracy across integrated modules</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Education & Certifications</div>
+    <div class="edu-item">
+      <div class="edu-name">Certified Product Owner</div>
+      <div class="edu-detail">Aug 2020</div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-name">Bachelor of Engineering</div>
+      <div class="edu-detail">CSVTU, India · 2008 – 2012</div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>Baljeet Bal · singhbarry@outlook.com · 647-482-9893</p>
+</footer>
+
+<script>
+  function copyEmail(btn) {
+    navigator.clipboard.writeText('singhbarry@outlook.com').then(() => {
+      const label = btn.querySelector('#copy-label');
+      const icon = btn.querySelector('#copy-icon');
+      label.textContent = 'Copied!';
+      icon.innerHTML = '<polyline points="20 6 9 17 4 12" stroke="currentColor" stroke-width="2" fill="none"/>';
+      btn.style.borderColor = '#bbf7d0';
+      btn.style.color = '#15803d';
+      setTimeout(() => {
+        label.textContent = 'Copy email';
+        icon.innerHTML = '<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>';
+        btn.style.borderColor = '';
+        btn.style.color = '';
+      }, 2000);
+    });
+  }
+</script>
+</body>
+</html>
